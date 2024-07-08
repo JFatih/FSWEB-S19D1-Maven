@@ -4,6 +4,7 @@ import com.workintech.s18d2.Validation;
 import com.workintech.s18d2.entity.Vegetable;
 import com.workintech.s18d2.services.VegetableService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,8 +37,8 @@ public class VegetableController {
     }
 
     @PostMapping
-    public Vegetable save(@RequestBody Vegetable vegetable){
-        Validation.isVariablesExist(vegetable);
+    public Vegetable save(@Validated @RequestBody Vegetable vegetable){
+        Validation.isIdValid(vegetable.getId());
         return vegetableService.save(vegetable);
     }
 

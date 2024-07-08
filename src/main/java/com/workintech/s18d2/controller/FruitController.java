@@ -4,6 +4,7 @@ import com.workintech.s18d2.Validation;
 import com.workintech.s18d2.entity.Fruit;
 import com.workintech.s18d2.services.FruitService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,9 +38,8 @@ public class FruitController {
     }
 
     @PostMapping
-    public Fruit save(@RequestBody Fruit fruit){
+    public Fruit save(@Validated @RequestBody Fruit fruit){
         Validation.isIdValid(fruit.getId());
-        Validation.isVariablesExist(fruit);
         return fruitService.save(fruit);
     }
 

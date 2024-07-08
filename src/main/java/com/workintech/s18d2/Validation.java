@@ -25,15 +25,4 @@ public class Validation {
         throw new PlantException("Id cannot exist", HttpStatus.BAD_REQUEST);
     }
 
-    public static void isVariablesExist(Object obj){
-        if(obj instanceof Fruit fruit){
-            if(fruit.getName().isEmpty() || fruit.getFruitType() == null || fruit.getPrice() == 0){
-                throw new PlantException("Variables cannot be null or empty", HttpStatus.BAD_REQUEST);
-            }
-        } else if (obj instanceof Vegetable vegetable) {
-            if(vegetable.getName().isEmpty() || vegetable.getPrice() == 0){
-                throw new PlantException("Variables cannot be null or empty", HttpStatus.BAD_REQUEST);
-            }
-        }
-    }
 }
